@@ -27,5 +27,5 @@ jobs:
       if: always() #even the previouse one is failed, run this
       with: 
         name: bandit-findings
-        path: bandit-report.json
+        path: bandit_report.json
     
