@@ -20,5 +20,12 @@ jobs:
       run: pip install bandit
 
     - name: Run Bandit Scan
-      run: bandit -ll -ii -r . 
+      run: bandit -ll -ii -r . -f json -o bandit_report.json # -ll=severity level medium or high,  -ii=confident level medium or high
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v5.0.0 
+      if: always() #even the previouse one is failed, run this
+      with: 
+        name: bandit-findings
+        path: bandit-report.json
     
