@@ -2,10 +2,12 @@ FROM python:3.11-slim-bullseye
 
 WORKDIR /app
 
-# dependencies for psycopg2
+# Install system dependencies including build tools for psycopg2
 RUN apt-get update && apt-get install --no-install-recommends -y \
     dnsutils \
     libpq-dev \
+    gcc \
+    python3-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
